@@ -2,30 +2,42 @@
 
 ## Prerequisites
 
-- Git - [Download & Install Git](https://git-scm.com/downloads).
-- Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
+- Git - [Download & Install Git](https://git-scm.com/downloads)
+- Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) (v22.14.0 or newer) which already bundles npm
 
-## Downloading
+## Installation
 
-```
+```bash
 git clone {repository URL}
-```
-
-## Installing NPM modules
-
-```
+cd nodejs2025Q2-service
 npm install
+cp .env.example .env
 ```
 
 ## Running application
 
-```
+```bash
 npm start
 ```
 
-After starting the app on port (4000 as default) you can open
-in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
-For more information about OpenAPI/Swagger please visit https://swagger.io/.
+The server listens on the port specified by `PORT` inside `.env` (default `4000`).
+
+Once the service is running you can interact with it using any REST client:
+
+| Method | Endpoint            | Description                       |
+|--------|---------------------|-----------------------------------|
+| GET    | `/user`             | List users                        |
+| POST   | `/user`             | Create user                       |
+| PUT    | `/user/{id}`        | Update user password              |
+| DELETE | `/user/{id}`        | Delete user                       |
+| GET    | `/artist`           | List artists                      |
+| GET    | `/album`            | List albums                       |
+| GET    | `/track`            | List tracks                       |
+| GET    | `/favs`             | List favorites                    |
+| POST   | `/favs/{type}/{id}` | Add entity to favorites           |
+| DELETE | `/favs/{type}/{id}` | Remove entity from favorites      |
+
+See `doc/api.yaml` for the complete OpenAPI contract (import it into Swagger UI or Insomnia/ Postman to explore all operations).
 
 ## Testing
 
@@ -57,11 +69,8 @@ npm run test:auth -- <path to suite>
 
 ### Auto-fix and format
 
-```
+```bash
 npm run lint
-```
-
-```
 npm run format
 ```
 
