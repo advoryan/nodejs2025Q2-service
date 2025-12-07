@@ -6,11 +6,11 @@ import { ArtistsModule } from './modules/artists/artists.module';
 import { AlbumsModule } from './modules/albums/albums.module';
 import { TracksModule } from './modules/tracks/tracks.module';
 import { FavoritesModule } from './modules/favorites/favorites.module';
-import { DatabaseModule } from './modules/database/database.module';
+import { PrismaModule } from './modules/prisma/prisma.module';
 
 @Module({
   imports: [
-    DatabaseModule,
+    PrismaModule,
     UsersModule,
     ArtistsModule,
     AlbumsModule,

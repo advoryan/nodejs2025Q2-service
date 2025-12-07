@@ -2,11 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { config } from 'dotenv';
 import { AppModule } from './app.module';
+import { PrismaService } from './modules/prisma/prisma.service';
 
 config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app);
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
